@@ -19,7 +19,7 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Store", href: "/store" },
+    { name: "Store", href: "#store", isAnchor: true },
     { name: "News", href: "/news" },
     { name: "Vote", href: "/vote" },
     { name: "Wiki", href: "/wiki" },
@@ -49,15 +49,33 @@ export function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`text-sm font-medium tracking-wide transition-all duration-200 hover:text-orange-400 hover:scale-105 ${
-                  location === link.href ? "text-orange-500" : "text-gray-300"
-                }`}
-              >
-                {link.name.toUpperCase()}
-              </Link>
+              link.isAnchor ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (location !== "/") {
+                      window.location.href = "/#store";
+                    } else {
+                      document.getElementById('store')?.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="text-sm font-medium tracking-wide transition-all duration-200 hover:text-orange-400 hover:scale-105 text-gray-300 uppercase cursor-pointer"
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`text-sm font-medium tracking-wide transition-all duration-200 hover:text-orange-400 hover:scale-105 ${
+                    location === link.href ? "text-orange-500" : "text-gray-300"
+                  }`}
+                >
+                  {link.name.toUpperCase()}
+                </Link>
+              )
             ))}
           </div>
 
@@ -94,16 +112,35 @@ export function Navbar() {
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`text-2xl font-bold font-display ${
-                    location === link.href ? "text-orange-500" : "text-white"
-                  }`}
-                >
-                  {link.name}
-                </Link>
+                link.isAnchor ? (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setMobileMenuOpen(false);
+                      if (location !== "/") {
+                        window.location.href = "/#store";
+                      } else {
+                        document.getElementById('store')?.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="text-2xl font-bold font-display text-white uppercase cursor-pointer"
+                  >
+                    {link.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`text-2xl font-bold font-display ${
+                      location === link.href ? "text-orange-500" : "text-white"
+                    }`}
+                  >
+                    {link.name.toUpperCase()}
+                  </Link>
+                )
               ))}
               <div className="h-px bg-white/10 my-2" />
               <Button className="w-full bg-orange-600 py-6 text-lg">LOGIN</Button>
