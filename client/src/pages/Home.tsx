@@ -77,13 +77,57 @@ export default function Home() {
               The ultimate Lifesteal SMP experience. Build your base, hunt players, steal hearts, and dominate the server.
             </p>
 
-            <div className="flex flex-col md:flex-row items-center gap-4 mb-16">
-              <Button 
-                className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white h-14 px-10 text-lg font-bold rounded-lg shadow-lg shadow-orange-600/25 transition-all hover:scale-105"
-              >
-                JOIN THE SERVER
-              </Button>
-              <CopyIpButton />
+            <div className="flex flex-col md:flex-row items-center gap-6 mb-16">
+              <div className="flex flex-col gap-4">
+                <Button 
+                  onClick={() => window.open("https://discord.gg/ShardMC", "_blank")}
+                  className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white h-14 px-10 text-lg font-bold rounded-lg shadow-lg shadow-orange-600/25 transition-all hover:scale-105"
+                >
+                  JOIN THE SERVER
+                </Button>
+                <Button 
+                  onClick={() => window.open("https://discord.gg/ShardMC", "_blank")}
+                  variant="outline"
+                  className="border-white/20 text-white hover:bg-white/10 h-14 px-10 text-lg font-bold rounded-lg backdrop-blur-sm"
+                >
+                  JOIN DISCORD
+                </Button>
+              </div>
+
+              {/* Server Info Box */}
+              <div className="bg-black/40 backdrop-blur-xl border border-orange-500/30 rounded-2xl p-6 relative group overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-red-500/10 animate-pulse" />
+                <div className="relative z-10 space-y-4">
+                  <div>
+                    <div className="text-xs font-bold text-orange-500 uppercase tracking-widest mb-1">Java Edition</div>
+                    <div className="flex items-center gap-3 bg-white/5 rounded-lg p-3 border border-white/10">
+                      <span className="font-mono text-white text-lg">play.shardmc.fun</span>
+                      <button 
+                        onClick={() => {
+                          navigator.clipboard.writeText("play.shardmc.fun");
+                          setCopied(true);
+                          setTimeout(() => setCopied(false), 2000);
+                        }}
+                        className="p-2 hover:bg-white/10 rounded-md transition-colors"
+                      >
+                        {copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4 text-gray-400" />}
+                      </button>
+                    </div>
+                  </div>
+                  <div className="pt-2 border-t border-white/10">
+                    <div className="text-xs font-bold text-red-500 uppercase tracking-widest mb-1 flex items-center gap-2">
+                      Bedrock Edition
+                      <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                    </div>
+                    <div className="text-gray-300 font-mono text-sm space-y-1">
+                      <div>IP: play.shardmc.fun</div>
+                      <div>Port: 19130</div>
+                    </div>
+                  </div>
+                </div>
+                {/* Glowing Border Animation */}
+                <div className="absolute inset-0 border border-orange-500/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_20px_rgba(249,115,22,0.3)]" />
+              </div>
             </div>
 
             {/* Live Stats */}
@@ -216,6 +260,49 @@ export default function Home() {
                 <p className="text-gray-500">No news articles found.</p>
               </div>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* STORE SECTION */}
+      <section id="store" className="py-32 bg-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-orange-500/5 to-transparent" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <h2 className="text-5xl md:text-6xl font-bold font-display text-white tracking-tight">
+                PURCHASE <span className="text-orange-500">RANKS & PERKS</span>
+              </h2>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                All purchases are handled securely through our Discord support system.
+              </p>
+              
+              <div className="mt-12 p-1 bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl inline-block shadow-[0_0_40px_rgba(249,115,22,0.2)]">
+                <div className="bg-zinc-900 rounded-[14px] p-10 space-y-8">
+                  <Button 
+                    onClick={() => window.open("https://discord.gg/ShardMC", "_blank")}
+                    className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white h-20 px-16 text-2xl font-black rounded-xl transition-all hover:scale-105 active:scale-95 shadow-xl"
+                  >
+                    OPEN PURCHASE TICKET
+                  </Button>
+                  <div className="flex flex-col items-center gap-2">
+                    <p className="text-gray-300 font-medium">
+                      After joining, open a ticket in <span className="text-orange-500 font-bold">#support</span> to buy ranks.
+                    </p>
+                    <div className="flex items-center gap-4 text-gray-500 text-sm mt-4">
+                      <span className="flex items-center gap-1"><Shield className="w-4 h-4" /> Secure Payment</span>
+                      <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> 24/7 Support</span>
+                      <span className="flex items-center gap-1"><Users className="w-4 h-4" /> Trusted Community</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
