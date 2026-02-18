@@ -19,10 +19,11 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "/" },
+    { name: "Server", href: "/#server", isAnchor: true },
     { name: "Store", href: "#store", isAnchor: true },
-    { name: "News", href: "/news" },
-    { name: "Vote", href: "/vote" },
     { name: "Wiki", href: "/wiki" },
+    { name: "Rules", href: "/rules" },
+    { name: "Discord", href: "https://discord.gg/ShardMC", isExternal: true },
   ];
 
   return (
@@ -49,16 +50,27 @@ export function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              link.isAnchor ? (
+              link.isExternal ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sm font-medium tracking-wide transition-all duration-200 hover:text-orange-400 hover:scale-105 text-gray-300 uppercase cursor-pointer"
+                >
+                  {link.name}
+                </a>
+              ) : link.isAnchor ? (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => {
                     e.preventDefault();
+                    const id = link.href.replace('#', '').replace('/#', '');
                     if (location !== "/") {
-                      window.location.href = "/#store";
+                      window.location.href = `/#${id}`;
                     } else {
-                      document.getElementById('store')?.scrollIntoView({ behavior: 'smooth' });
+                      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
                     }
                   }}
                   className="text-sm font-medium tracking-wide transition-all duration-200 hover:text-orange-400 hover:scale-105 text-gray-300 uppercase cursor-pointer"
@@ -112,17 +124,29 @@ export function Navbar() {
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
-                link.isAnchor ? (
+                link.isExternal ? (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-2xl font-bold font-display text-white uppercase cursor-pointer"
+                  >
+                    {link.name}
+                  </a>
+                ) : link.isAnchor ? (
                   <a
                     key={link.name}
                     href={link.href}
                     onClick={(e) => {
                       e.preventDefault();
                       setMobileMenuOpen(false);
+                      const id = link.href.replace('#', '').replace('/#', '');
                       if (location !== "/") {
-                        window.location.href = "/#store";
+                        window.location.href = `/#${id}`;
                       } else {
-                        document.getElementById('store')?.scrollIntoView({ behavior: 'smooth' });
+                        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
                       }
                     }}
                     className="text-2xl font-bold font-display text-white uppercase cursor-pointer"

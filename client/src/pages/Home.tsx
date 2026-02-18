@@ -168,7 +168,7 @@ export default function Home() {
       </section>
 
       {/* FEATURES GRID */}
-      <section className="py-32 relative bg-black">
+      <section id="server" className="py-32 relative bg-black">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold font-display mb-4">
