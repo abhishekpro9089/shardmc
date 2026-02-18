@@ -83,6 +83,8 @@ export default {
         },
       },
       fontFamily: {
+        display: ['"Space Grotesk"', "sans-serif"],
+        body: ['"Inter"', "sans-serif"],
         sans: ["var(--font-sans)"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
