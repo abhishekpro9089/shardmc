@@ -16,9 +16,8 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getNewsItem(id: number): Promise<NewsItem | undefined> {
-    const [item] = await db.select().from(news).where({ id }); // Note: where({ id }) is not correct for drizzle, need eq
-    // Fixing drizzle syntax below in implementation
-    return undefined; 
+    const [item] = await db.select().from(news).where(eq(news.id, id));
+    return item;
   }
 
   async createNews(insertNews: InsertNews): Promise<NewsItem> {

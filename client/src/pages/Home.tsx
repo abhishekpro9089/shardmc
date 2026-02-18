@@ -34,6 +34,7 @@ function CopyIpButton() {
 export default function Home() {
   const { data: stats } = useStats();
   const { data: news } = useNews();
+  const [copied, setCopied] = useState(false);
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-orange-500/30">
