@@ -1,0 +1,142 @@
+Build a FULL premium Minecraft network website for ShardMC.
+
+Server Name: ShardMC
+Tagline: The Ultimate Lifesteal Experience
+Server IP: play.shardmc.fun
+Discord: https://discord.gg/ShardMC
+
+Theme:
+Dark black base
+Orange + Red animated gradient
+Fire / lifesteal aesthetic
+Esports network style
+
+Tech Requirements:
+- Use TailwindCSS
+- Use modern layout
+- Smooth animations
+- Parallax scrolling
+- Glassmorphism
+- Particle background
+- Scroll reveal animations
+- Clean professional spacing
+- Fully responsive
+- Everything in ONE working index.html file
+- Well structured, clean commented code
+
+===================================
+LAYOUT STRUCTURE (HIGH-END)
+===================================
+
+1. ADVANCED NAVBAR
+- Sticky
+- Transparent then dark on scroll
+- Logo text SHARDMC (glowing gradient)
+- Menu:
+   - Home
+   - Server
+   - Store
+   - Vote
+   - Leaderboards
+   - Rules
+   - Discord
+- Login/Register button
+- Hover underline animation
+- Mobile hamburger menu
+
+2. HERO SECTION (NETWORK LEVEL)
+- Full width animated background
+- Dark overlay
+- Fire glowing SHARDMC logo text
+- Subtitle:
+   The Most Competitive Lifesteal Server
+- Live stats:
+   - 247 Players Online
+   - 2,300+ Members
+   - 99% Uptime
+- 2 big buttons:
+   - Join Server (Copy IP)
+   - Join Discord
+- Floating animated particles
+
+3. LIVE SERVER STATUS PANEL
+- Animated green online indicator
+- Player count placeholder
+- Version 1.20+
+- Animated loading bars
+- Professional dashboard style
+
+4. FEATURE GRID (PREMIUM CARDS)
+6 animated cards with icons:
+- Lifesteal PvP
+- Custom Abilities
+- Events & Tournaments
+- Advanced Anti Cheat
+- Competitive Leaderboards
+- Dedicated Staff
+
+Hover:
+- Lift effect
+- Glow effect
+- Subtle scale
+
+5. GAMEPLAY SHOWCASE SECTION
+- 3 image placeholders
+- Parallax scroll effect
+- Smooth fade animations
+
+6. NETWORK STATS SECTION
+Large animated counters:
+- 50,000+ Total Players
+- 1,000,000+ Kills
+- 10,000+ Raids
+- 24/7 Online
+
+Use number counting animation.
+
+7. STORE PREVIEW SECTION
+- 3 premium cards:
+   - VIP
+   - MVP
+   - LEGEND
+- Glowing borders
+- Price placeholders
+- Buy Now button
+
+8. DISCORD COMMUNITY SECTION
+- Big animated glowing card
+- Join 2,300+ Members
+- Embedded style box
+- Big Join Now button
+
+9. NEWS / BLOG SECTION
+- 3 announcement cards
+- Image placeholder
+- Title
+- Description
+- Read more button
+
+10. FOOTER
+- Dark gradient
+- Logo
+- Quick links
+- Social icons placeholders
+- Copyright 2026 ShardMC
+
+===================================
+ADVANCED VISUAL FEATURES
+===================================
+
+- Fire glow text animation
+- Animated gradient buttons
+- Scroll reveal effects
+- Animated background particles
+- Parallax hero effect
+- Smooth transitions everywhere
+- Professional esports vibe
+- Clean code
+
+IMPORTANT:
+Return complete working code only.
+No explanations.
+Make it look like a top-tier Minecraft network website.
