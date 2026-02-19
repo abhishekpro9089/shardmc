@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ShoppingCart, User } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./ui/button";
 
@@ -20,8 +20,7 @@ export function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Server", href: "/#server", isAnchor: true },
-    { name: "Store", href: "#store", isAnchor: true },
-    { name: "Wiki", href: "/wiki" },
+    { name: "Store", href: "/#store", isAnchor: true },
     { name: "Rules", href: "/rules" },
     { name: "Discord", href: "https://discord.gg/ShardMC", isExternal: true },
   ];
@@ -32,8 +31,8 @@ export function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled 
-            ? "bg-black/80 backdrop-blur-xl border-b border-white/10 py-3" 
+          isScrolled
+            ? "bg-black/80 backdrop-blur-xl border-b border-white/10 py-3"
             : "bg-transparent py-6"
         }`}
       >
@@ -42,21 +41,21 @@ export function Navbar() {
             <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-orange-500/20">
               <span className="text-white font-bold text-xl">S</span>
             </div>
-            <span className="text-2xl font-bold font-display tracking-tight text-white group-hover:text-orange-500 transition-colors duration-300">
+            <span className="text-2xl font-bold tracking-tight text-white group-hover:text-orange-500 transition-colors duration-300">
               SHARD<span className="text-orange-500">MC</span>
             </span>
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+            {navLinks.map((link) =>
               link.isExternal ? (
                 <a
                   key={link.name}
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sm font-medium tracking-wide transition-all duration-200 hover:text-orange-400 hover:scale-105 text-gray-300 uppercase cursor-pointer"
+                  className="text-sm font-medium tracking-wide transition-all duration-200 hover:text-orange-400 text-gray-300 uppercase"
                 >
                   {link.name}
                 </a>
@@ -66,14 +65,16 @@ export function Navbar() {
                   href={link.href}
                   onClick={(e) => {
                     e.preventDefault();
-                    const id = link.href.replace('#', '').replace('/#', '');
+                    const id = link.href.replace("/#", "");
                     if (location !== "/") {
                       window.location.href = `/#${id}`;
                     } else {
-                      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+                      document
+                        .getElementById(id)
+                        ?.scrollIntoView({ behavior: "smooth" });
                     }
                   }}
-                  className="text-sm font-medium tracking-wide transition-all duration-200 hover:text-orange-400 hover:scale-105 text-gray-300 uppercase cursor-pointer"
+                  className="text-sm font-medium tracking-wide transition-all duration-200 hover:text-orange-400 text-gray-300 uppercase"
                 >
                   {link.name}
                 </a>
@@ -81,29 +82,19 @@ export function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-sm font-medium tracking-wide transition-all duration-200 hover:text-orange-400 hover:scale-105 ${
-                    location === link.href ? "text-orange-500" : "text-gray-300"
+                  className={`text-sm font-medium tracking-wide transition-all duration-200 hover:text-orange-400 ${
+                    location === link.href
+                      ? "text-orange-500"
+                      : "text-gray-300"
                   }`}
                 >
                   {link.name.toUpperCase()}
                 </Link>
               )
-            ))}
+            )}
           </div>
 
-          <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="text-gray-300 hover:text-white hover:bg-white/5">
-              <ShoppingCart className="w-5 h-5" />
-            </Button>
-            <Button 
-              className="bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg px-6 shadow-lg shadow-orange-600/20 border border-orange-500/50 hover:shadow-orange-600/40 transition-all duration-300"
-            >
-              <User className="w-4 h-4 mr-2" />
-              LOGIN
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
+          {/* Mobile Button */}
           <button
             className="md:hidden text-white"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -113,17 +104,17 @@ export function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl md:hidden pt-24 px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 bg-black/95 md:hidden pt-24 px-4"
           >
             <div className="flex flex-col gap-6">
-              {navLinks.map((link) => (
+              {navLinks.map((link) =>
                 link.isExternal ? (
                   <a
                     key={link.name}
@@ -131,25 +122,7 @@ export function Navbar() {
                     target="_blank"
                     rel="noreferrer"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-2xl font-bold font-display text-white uppercase cursor-pointer"
-                  >
-                    {link.name}
-                  </a>
-                ) : link.isAnchor ? (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setMobileMenuOpen(false);
-                      const id = link.href.replace('#', '').replace('/#', '');
-                      if (location !== "/") {
-                        window.location.href = `/#${id}`;
-                      } else {
-                        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
-                    className="text-2xl font-bold font-display text-white uppercase cursor-pointer"
+                    className="text-2xl font-bold text-white uppercase"
                   >
                     {link.name}
                   </a>
@@ -158,16 +131,12 @@ export function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`text-2xl font-bold font-display ${
-                      location === link.href ? "text-orange-500" : "text-white"
-                    }`}
+                    className="text-2xl font-bold text-white uppercase"
                   >
-                    {link.name.toUpperCase()}
+                    {link.name}
                   </Link>
                 )
-              ))}
-              <div className="h-px bg-white/10 my-2" />
-              <Button className="w-full bg-orange-600 py-6 text-lg">LOGIN</Button>
+              )}
             </div>
           </motion.div>
         )}
